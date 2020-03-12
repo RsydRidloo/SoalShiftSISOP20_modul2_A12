@@ -61,7 +61,7 @@
        	    if(indomie == 0)
 	        {
 	    	    //child process(indomie) untuk membuat folder indomie di home/angelita/modul2/
-	    	    char *argv[] = {"mkdir", "-p", "home/angelita/modul2/indomie", NULL};
+	    	    char *argv[] = {"mkdir", "home/angelita/modul2/indomie", NULL};
 	    	    execv("/bin/mkdir",argv);
 	        }
     	    sleep(5); //sleep selama 5 detik untuk jeda pembuatan folder sedaap setelah membuat folder indomie
@@ -76,7 +76,7 @@
 	        if(sedaap == 0)
 	        {
 	    	    //child process(sedaap) untuk membuat folder indomie di home/angelita/modul2/
-	    	    char *argv[] = {"mkdir", "-p", "home/angelita/modul2/sedaap", NULL};
+	    	    char *argv[] = {"mkdir", "home/angelita/modul2/sedaap", NULL};
 	    	    execv("/bin/mkdir",argv);
 	        }
         }
