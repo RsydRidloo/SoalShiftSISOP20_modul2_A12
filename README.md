@@ -46,6 +46,40 @@
 3. Jaya adalah seorang programmer handal mahasiswa informatika. Suatu hari dia memperoleh tugas yang banyak dan berbeda tetapi harus dikerjakan secara bersamaan (multiprocessing).
 
     a. Program buatan jaya harus bisa membuat dua direktori di “/home/[USER]/modul2/”. Direktori yang pertama diberi nama “indomie”, lalu lima detik kemudian membuat direktori yang kedua bernama “sedaap”.
+    
+        void makedir(){
+	        pid_t indomie, sedaap; //variabel untuk menyimpan pid
+
+	        indomie = fork(); //menyimpan pid child process (indomie)
+
+	        //keluar saat fork gagal (nilai variabel pid<0)
+    	    if(indomie < 0)
+	        {
+	    	    exit(EXIT_FAILURE);
+    	    }
+    	
+       	    if(indomie == 0)
+	        {
+	    	    //child process(indomie) untuk membuat folder indomie di home/angelita/modul2/
+	    	    char *argv[] = {"mkdir", "-p", "home/angelita/modul2/indomie", NULL};
+	    	    execv("/bin/mkdir",argv);
+	        }
+    	    sleep(5); //sleep selama 5 detik untuk jeda pembuatan folder sedaap setelah membuat folder indomie
+	
+    	    sedaap = fork(); //menyimpan pid child process(sedaap)
+	
+	        //keluar saat fork gagal (nilai variabel pid<0)
+	        if(sedaap < 0)
+	        {
+	        	exit(EXIT_FAILURE);
+	        }
+	        if(sedaap == 0)
+	        {
+	    	    //child process(sedaap) untuk membuat folder indomie di home/angelita/modul2/
+	    	    char *argv[] = {"mkdir", "-p", "home/angelita/modul2/sedaap", NULL};
+	    	    execv("/bin/mkdir",argv);
+	        }
+        }
   
     b. Kemudian program tersebut harus meng-ekstrak file jpg.zip di direktori “/home/[USER]/modul2/”. Setelah tugas sebelumnya selesai, ternyata tidak hanya itu tugasnya.
   
