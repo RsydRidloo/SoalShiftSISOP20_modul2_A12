@@ -37,37 +37,37 @@
        #include <time.h>
        #include <sys/wait.h>
 
-int angkacheck(char isi[]){
-   if(strlen(isi) == 1)
-        if(isi[0] == '*')
+       int angkacheck(char isi[]){
+      	   if(strlen(isi) == 1)
+           if(isi[0] == '*')
             return 1;
-    else{
-        for(int i = 0; i < strlen(isi); i+=1){
-            if(isi[i] > '0' || isi[i] < '9')
+           else{
+               for(int i = 0; i < strlen(isi); i+=1){
+           if(isi[i] > '0' || isi[i] < '9')
                 return 2;
-        }
-    }
+         }
+       }
 
-}
-int main(int argc, char *argv[]) {
-  int jam,menit,detik,detik_tm,menit_tm,jam_tm;
+       }
+       int main(int argc, char *argv[]) {
+       int jam,menit,detik,detik_tm,menit_tm,jam_tm;
 
-  //cek apabila argumen sama dengan 4
+       //cek apabila argumen sama dengan 4
 
-  if(argc != 5){
-    printf("Tolong Sesuaikan dengan argumen !!!\n");
-    return 0;
-  }
+       if(argc != 5){
+         printf("Tolong Sesuaikan dengan argumen !!!\n");
+       return 0;
+       }
 
-//cek detik sesuai argumen yang diinputkan
+       //cek detik sesuai argumen yang diinputkan
 
-  if(strcmp(argv[1],"*") == 0) detik = 60;
-  else if(angkacheck(argv[1])){
-    detik = atoi(argv[1]);
-  }
-   else  if(detik > 59 || detik < 0){
-      printf("Input Angka 0-59 woy\n");
-      return 0;
+       if(strcmp(argv[1],"*") == 0) detik = 60;
+        else if(angkacheck(argv[1])){
+         detik = atoi(argv[1]);
+       }
+        else  if(detik > 59 || detik < 0){
+         printf("Input Angka 0-59 woy\n");
+         return 0;
     }
     else{
         printf("Input angka woy\n");
