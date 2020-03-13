@@ -47,7 +47,6 @@
 
     a. Program buatan jaya harus bisa membuat dua direktori di “/home/[USER]/modul2/”. Direktori yang pertama diberi nama “indomie”, lalu lima detik kemudian membuat direktori yang kedua bernama “sedaap”.
     
-        void makedir(){
 	        pid_t indomie, sedaap; //variabel untuk menyimpan pid
 
 	        indomie = fork(); //menyimpan pid child process (indomie)
@@ -79,13 +78,30 @@
 	    	    char *argv[] = {"mkdir", "home/angelita/modul2/sedaap", NULL};
 	    	    execv("/bin/mkdir",argv);
 	        }
-        }
+        
   
     b. Kemudian program tersebut harus meng-ekstrak file jpg.zip di direktori “/home/[USER]/modul2/”. Setelah tugas sebelumnya selesai, ternyata tidak hanya itu tugasnya.
+    
+    		pid_t anzippu; //variabel untuk menyimpan pid
+
+		anzippu = fork(); // menyimpan pid child process(anzippu)
+
+		//keluar saat fork gagal (nilai variabel pid<0)
+		if(anzippu < 0)
+		{
+			exit(EXIT_FAILURE);
+		}
+		
+		//child process(anzippu) mengekstrak/unzip jpg.zip
+		if(anzippu == 0)
+		{
+			char *argv[] = {"unzip", "/home/angelita/modul2/jpg.zip",  NULL};
+			execv("/usr/bin/unzip",argv);
+		}	
+    		
   
     c. Diberilah tugas baru yaitu setelah di ekstrak, hasil dari ekstrakan tersebut (di dalam direktori “home/[USER]/modul2/jpg/”) harus dipindahkan sesuai dengan pengelompokan, semua file harus dipindahkan ke “/home/[USER]/modul2/sedaap/” dan semua direktori harus dipindahkan ke “/home/[USER]/modul2/indomie/”.
   
     d. Untuk setiap direktori yang dipindahkan ke “/home/[USER]/modul2/indomie/” harus membuat dua file kosong. File yang pertama diberi nama “coba1.txt”, lalu 3 detik kemudian membuat file bernama “coba2.txt”. (contoh : “/home/[USER]/modul2/indomie/{nama_folder}/coba1.txt”). 
   
-    Karena Jaya terlalu banyak tugas dia jadi stress, jadi bantulah Jaya agar bisa membuat
-    program tersebut.
+   
