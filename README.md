@@ -82,7 +82,7 @@
   
     b. Kemudian program tersebut harus meng-ekstrak file jpg.zip di direktori “/home/[USER]/modul2/”. Setelah tugas sebelumnya selesai, ternyata tidak hanya itu tugasnya.
     
-    		pid_t anzippu; //variabel untuk menyimpan pid
+    	pid_t anzippu; //variabel untuk menyimpan pid
 
 		anzippu = fork(); // menyimpan pid child process(anzippu)
 
