@@ -1,4 +1,3 @@
-#!/bin/bash
+#!/bin/bash                                                                                                                                                                                                                                                                                                                            
 
-timer=`date`
-echo "Berhasil, $timer"
+date >> /home/rasyid/date.txt 
