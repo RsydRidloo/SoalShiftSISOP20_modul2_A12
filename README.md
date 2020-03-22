@@ -250,7 +250,21 @@ Penjelasan	:
     			sleep(30); //menunggu 30 detik sebelum membuat folder berikutnya
   		}
 		}
-  
+	Penjelasan : 
+	* Membuat folder
+		* child_id = fork(); --> membuat proses
+		* struct tm tm = *localtime(&t); --> mengambil local time untuk nama folder nantinya
+		* sprintf(datestr, "%d-%02d-%02d_%02d:%02d:%02d",tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec); --> menyimpan isi dari struct tm tm yang berisi localtime dari perangkat ke char datestr dengan format [YYYY-mm-dd_HH:ii:ss]
+		* char path[100] = "/home/angelita/modul2/"; --> membuat variabel char path yang berisi alamat dimana folder akan dibuat nantinya
+		* strcat(path, datestr); --> menggabungkan path dengan datestr sehingga path akan menyimpan /home/angelita/modul2/[YYYY-mm-dd_HH:ii:ss] sesuai dengan time pada perangkat pada saat dijalankan
+		* if(child_id == 0)
+  			{	
+				char *mkdir[] = {"mkdir", "-p", path, NULL}; 
+  				execv("/bin/mkdir", mkdir);
+  			}
+  		   melakukan make directory dengan menggunakan exec 
+	* Menjalankan secara otomatis setiap 30 detik
+		* Menggunakan template daemon default dengan sleep(30); untuk membuat program berjalan setiap 30 detik sekali
     b. Tiap-tiap folder lalu diisi dengan 20 gambar yang di download dari https://picsum.photos/, dimana tiap gambar di download setiap 5 detik. Tiap gambar berbentuk persegi dengan ukuran (t%1000)+100 piksel dimana t adalah detik Epoch Unix. Gambar tersebut diberi nama dengan format timestamp [YYYY-mm-dd_HH:ii:ss].
  
     c. Agar rapi, setelah sebuah folder telah terisi oleh 20 gambar, folder akan di zip dan folder akan di delete(sehingga hanya menyisakan .zip).
