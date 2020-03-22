@@ -265,6 +265,7 @@ Penjelasan	:
   		   melakukan make directory dengan menggunakan exec 
 	* Menjalankan secara otomatis setiap 30 detik
 		* Menggunakan template daemon default dengan sleep(30); untuk membuat program berjalan setiap 30 detik sekali
+		
     b. Tiap-tiap folder lalu diisi dengan 20 gambar yang di download dari https://picsum.photos/, dimana tiap gambar di download setiap 5 detik. Tiap gambar berbentuk persegi dengan ukuran (t%1000)+100 piksel dimana t adalah detik Epoch Unix. Gambar tersebut diberi nama dengan format timestamp [YYYY-mm-dd_HH:ii:ss].
  
     c. Agar rapi, setelah sebuah folder telah terisi oleh 20 gambar, folder akan di zip dan folder akan di delete(sehingga hanya menyisakan .zip).
@@ -314,8 +315,24 @@ Penjelasan	:
 	    	    execv("/bin/mkdir",argv);
 	        }
         
-  
-    b. Kemudian program tersebut harus meng-ekstrak file jpg.zip di direktori “/home/[USER]/modul2/”. Setelah tugas sebelumnya selesai, ternyata tidak hanya itu tugasnya.
+  	Penjelasan :
+	* indomie = fork(); --> Membuat proses untuk indomie
+	* if(indomie == 0)
+	        {
+	    	    char *argv[] = {"mkdir", "home/angelita/modul2/indomie", NULL};
+	    	    execv("/bin/mkdir",argv);
+	        }
+	   membuat folder indomie di folder modul2 dengan menggunakan exec
+	* sleep(5) --> jeda selama 5 detik sebelum melakukan proses berikutnya
+	* sedaap = fork(); --> Membuat proses untuk sedaap
+	* if(indomie == 0)
+	        {
+	    	    char *argv[] = {"mkdir", "home/angelita/modul2/sedaap", NULL};
+	    	    execv("/bin/mkdir",argv);
+	        }
+	   membuat folder seddaap di folder modul2 dengan menggunakan exec
+	   
+	b. Kemudian program tersebut harus meng-ekstrak file jpg.zip di direktori “/home/[USER]/modul2/”. Setelah tugas sebelumnya selesai, ternyata tidak hanya itu tugasnya.
     
     	pid_t anzippu; //variabel untuk menyimpan pid
 
@@ -334,9 +351,18 @@ Penjelasan	:
 			execv("/usr/bin/unzip",argv);
 		}	
     		
-  
+  	Penjelasan :
+	* anzippu = fork(); --> membuat proses untuk unzip
+	* if(anzippu == 0)
+		{
+			char *argv[] = {"unzip", "/home/angelita/modul2/jpg.zip",  NULL};
+			execv("/usr/bin/unzip",argv);
+		}
+	   melakukan unzip menggunakan exec 
+	   
     c. Diberilah tugas baru yaitu setelah di ekstrak, hasil dari ekstrakan tersebut (di dalam direktori “home/[USER]/modul2/jpg/”) harus dipindahkan sesuai dengan pengelompokan, semua file harus dipindahkan ke “/home/[USER]/modul2/sedaap/” dan semua direktori harus dipindahkan ke “/home/[USER]/modul2/indomie/”.
   
     d. Untuk setiap direktori yang dipindahkan ke “/home/[USER]/modul2/indomie/” harus membuat dua file kosong. File yang pertama diberi nama “coba1.txt”, lalu 3 detik kemudian membuat file bernama “coba2.txt”. (contoh : “/home/[USER]/modul2/indomie/{nama_folder}/coba1.txt”). 
   
-   
+
+Kendala : Belum begitu paham materinya. Sebenarnya nomor 2 dan 3 juga sudah dikerjakan tetapi program masih belum jalan
