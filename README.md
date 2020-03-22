@@ -164,6 +164,20 @@
 
   			}
 		}
+
+Penjelasan	: 
+* if(strlen(isi) == 1) = jika panjang string adalah 1                                                                              
+* if(isi[0] == '*') = jika isi indeks 0 adalah *                                                                                                                                                                                                                                              
+* for(int i = 0; i < strlen(isi); i+=1){ = untuk perulangan sebanyak panjang karakter                                          
+* if(isi[i] > '0' || isi[i] < '9') = jika isi indeks berisikan angka 0-9    
+* if(strcmp(argv[1],"*") == 0) detik = 60;  = membandingkan jikan string 1 & 2 sama maka detik berubah menjadi 60                                                                           
+  else if(checkangka(argv[1])){             = mengecek angka yg diinput                                                                              
+  detik = atoi(argv[1]);                    = mengubah string menjadin integer                                                   
+}                                                                                                                        
+* else  if(detik > 59 || detik < 0){       = jika detik tidak sesuai 0-59 maka keluar peringatan                                                                                 
+  printf("Input Angka 0-59 woy\n"); 
+* time_t timer = time(NULL); = time_t(tipe data ) , time(NULL) memasukkan waktu sekarang ke timer
+* struct tm *tm_info = localtime(&timer = struct tm  ,nama struct yaitu tim_info 
      
 
 
