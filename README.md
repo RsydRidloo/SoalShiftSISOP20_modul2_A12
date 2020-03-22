@@ -39,10 +39,14 @@
        		
 		
 		
-       		int checkangka(char isi[]){                                                                                                			if(strlen(isi) == 1) // panjang string adalah 1                                                                              
-		     if(isi[0] == '*')// jika isi indeks 0 adalah *                                                                              		return 1; // maka return 1                                                                                      
-			else{//jika isi indeks tidak *                                                                                              				for(int i = 0; i < strlen(isi); i+=1){//untuk perulangan sebanyak panjang karakter                                          
-			    if(isi[i] > '0' || isi[i] < '9')//jika isi indeks berisikan angka 0-9                                                       			    return 2;                                                                                                       
+       		int checkangka(char isi[]){                                                                                             
+			if(strlen(isi) == 1) // panjang string adalah 1                                                                              
+			if(isi[0] == '*')// jika isi indeks 0 adalah *                                                                              
+				return 1; // maka return 1                                                                                      
+			else{//jika isi indeks tidak *                                                                                 	
+				for(int i = 0; i < strlen(isi); i+=1){//untuk perulangan sebanyak panjang karakter                                          
+			    	if(isi[i] > '0' || isi[i] < '9')//jika isi indeks berisikan angka 0-9                                                       
+					return 2;                                                                                                       
 			   	 }                                                                                                                   				}                                                                                                                                                                                                                                           			}        
 		int main(int argc, char *argv[]) {
   			int jam,menit,detik,detik_tm,menit_tm,jam_tm;
