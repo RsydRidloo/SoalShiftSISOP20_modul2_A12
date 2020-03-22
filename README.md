@@ -36,19 +36,14 @@
        		#include <ctype.h>
        		#include <time.h>
        		#include <sys/wait.h>
-       
-       		int angkacheck(char isi[]){
-       			if(strlen(isi) == 1)
-       			if(isi[0] == '*')
-       
-       			return 1;
-      	 		else{
-       				for(int i = 0; i < strlen(isi); i+=1){
-       					if(isi[i] > '0' || isi[i] < '9')
-      					return 2;
-       				}
-       			}
-		}
+       		
+		
+		
+       		int checkangka(char isi[]){                                                                                                			if(strlen(isi) == 1) // panjang string adalah 1                                                                              
+		     if(isi[0] == '*')// jika isi indeks 0 adalah *                                                                              		return 1; // maka return 1                                                                                      
+			else{//jika isi indeks tidak *                                                                                              				for(int i = 0; i < strlen(isi); i+=1){//untuk perulangan sebanyak panjang karakter                                          
+			    if(isi[i] > '0' || isi[i] < '9')//jika isi indeks berisikan angka 0-9                                                       			    return 2;                                                                                                       
+			   	 }                                                                                                                   				}                                                                                                                                                                                                                                           			}        
 		int main(int argc, char *argv[]) {
   			int jam,menit,detik,detik_tm,menit_tm,jam_tm;
 
@@ -135,13 +130,16 @@
   			close(STDERR_FILENO);
 
 			while (1) {
-     				time_t timer = time(NULL);
-     				struct tm *tm_info = localtime(&timer);
+     				time_t timer = time(NULL);//time_t(tipe data ) , time(NULL) memasukkan waktu sekarang ke timer
+     				struct tm *tm_info = localtime(&timer//struct tm  ,nama struct yaitu tim_info 
 
      				detik_tm = tm_info->tm_sec;
      				menit_tm = tm_info->tm_min;
      				jam_tm = tm_info->tm_hour;
-
+				
+				//Pengondisian untuk menjalankan jika telah memnuhi persyaratan misal 
+				"if ((tm_info->tm_sec == detik || detik == 60)" Jika waktu detik sekarang == waktu detik input atau detik = 				     * == 60
+				
       				if ((tm_info->tm_sec == detik || detik == 60) && (tm_info->tm_min == menit || menit == 60)
         				&& (tm_info->tm_hour == jam || jam == 24))
       				{
@@ -151,14 +149,14 @@
 					int status;
         				if (child_id == 0)
         				{
-          					char *args[] = {"bash", argv[4], NULL};
-          					execv("/bin/bash", args);
+          					char *args[] = {"bash", argv[4], NULL};//untuk bash argv4
+          					execv("/bin/bash", args);//menjalankan program bash dan menggantikan program yg sedang 										   berjalan
         				}
         				else
            				while ((wait(&status)) > 0);
     				}
 
-     				sleep(1);
+     				sleep(1);//untuk mengulang setiap detik
 
   			}
 		}
